@@ -1,0 +1,12 @@
+Logical volumes match bonus requirements.
+
+As I increased the size of /dev/sda2, I had to resize the physical volume to use the new space
+- pvresize /dev/mapper/sda2_crypt
+Created logical volumes
+- lvcreate -L 5G -n home b2br
+- lvcreate -L 3G -n var b2br
+- lvcreate -L 3G -n srv b2br
+- lvcreate -L 3G -n tmp b2br
+- lvcreate -L 4G -n var-log b2br
+
+Source: https://unix.stackexchange.com/a/98370

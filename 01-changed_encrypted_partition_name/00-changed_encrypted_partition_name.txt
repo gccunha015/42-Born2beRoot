@@ -1,0 +1,10 @@
+Changed name of partition on runtime
+- dmsetup rename /dev/mapper/luks* sda2_crypt
+Replaced "luks*" by "sda2_crypt"
+- vi /etc/crypttab
+Ovewritten initial image used by kernel for preloading block devices
+- dracut -f
+
+Source:
+- https://medium.com/opsops/how-to-rename-encrypted-root-volume-c6333cb72094
+- https://linux.die.net/man/8/dracut

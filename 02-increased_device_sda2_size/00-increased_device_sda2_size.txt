@@ -1,0 +1,2 @@
+Increased size to use all of the remaining space in disk.
+Source: https://techgarage.io/index.php/2017/10/01/lvm2-extend-file-system/

@@ -1,0 +1,20 @@
+Stopped firewalld
+- systemctl stop firewalld
+Disabled firewalld
+- systemctl disable firewalld
+Masked firewalld
+- systemctl maks --now firewalld
+Installed EPEL repository
+- dnf --releasever 8 install -y epel-release
+Installed ufw
+- dnf --releasever 8 install -y ufw
+Enabled ufw to start on boot
+- ufw enable
+Deleted all ufw rules
+- Ran 4 times
+-- ufw delete 1
+Created ufw rule to allow port 4242
+- ufw allow 4242/tcp
+
+Sources:
+- https://linuxize.com/post/how-to-stop-and-disable-firewalld-on-centos-7/
