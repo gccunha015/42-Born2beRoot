@@ -1,0 +1,41 @@
+Changed ssh service to listen on port 4242
+- sed -i 's/#Port 22/Port 4242/' /etc/ssh/sshd_config
+Blocked access as root via ssh
+- sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+Restarted ssh server service
+- systemctl restart sshd
+
+Installed package that contains semanage
+- dnf install -y policycoreutils-python-utils
+Configured SELinux to allow ssh on port 4242
+- semanage port -a -t ssh_port_t -p tcp 4242
+
+Stopped firewalld
+- systemctl stop firewalld
+Disabled firewalld
+- systemctl disable firewalld
+Masked firewalld
+- systemctl mask --now firewalld
+Installed EPEL repository
+- dnf install -y epel-release
+Installed ufw
+- dnf install -y ufw
+Enabled ufw to start on boot
+- ufw enable
+- systemctl enable ufw
+Deleted all ufw rules
+- Ran 4 times
+-- ufw delete 1
+Created ufw rule to allow port 4242
+- ufw allow 4242/tcp
+
+Changed hostname
+- hostnamectl set-hostname gcoelho-42
+Restarted to apply new hostname
+- reboot
+
+Sources:
+- https://www.itzgeek.com/how-tos/linux/centos-how-tos/semanage-command-not-found-in-centos-8-rhel-8.html
+- https://linuxhint.com/enable_ssh_centos8/
+- https://linuxize.com/post/how-to-stop-and-disable-firewalld-on-centos-7/
+- https://www.tecmint.com/set-change-hostname-in-centos-7/

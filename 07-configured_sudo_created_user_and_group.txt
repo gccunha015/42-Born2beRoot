@@ -1,0 +1,28 @@
+Edited /etc/sudoers with command visudo
+- Limited attempts to use sudo privileges
+-- Defaults    passwd_tries = 3
+- Customized wrong password message
+-- Defaults    badpass_message = "Keep trying"
+- Enabled input and output logging
+-- Defaults    log_input, log_output, io_dir = "/var/log/sudo/"
+- Enabled tty mode
+-- Defaults    requiretty
+- Configured secure paths
+-- Defaults    secure_path = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+Created user gcoelho-
+- useradd gcoelho-
+Configured password
+- passwd gcoelho-
+Added user gcoelho- to group wheel (sudo permissions)
+- usermod -aG wheel gcoelho-
+
+Created group user42
+- sudo groupadd user42
+Added user gcoelho- to group user42
+- usermod -aG user42 gcoelho-
+
+Sources:
+- https://www.tecmint.com/sudoers-configurations-for-setting-sudo-in-linux/
+- https://www.cyberciti.biz/faq/add-create-a-sudo-user-on-centos-linux-8/
+- https://manage.accuwebhosting.com/knowledgebase/2959/how-to-create-users-and-groups-in-centos7.html
